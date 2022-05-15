@@ -5,6 +5,7 @@ class User(db.Model):
     name=db.Column(db.String(100),nullable=False )
     email=db.Column(db.String(100),nullable=False )
     password=db.Column(db.String(150),nullable=False )
+    
 
     def __repr__(self):
         return "<User %r>" % self.name
