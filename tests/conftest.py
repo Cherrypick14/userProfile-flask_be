@@ -20,12 +20,28 @@ def init_database():
     # Create the database and the database table
     db.create_all()
 
-    # Insert test data
-    test_user = User(name='Test', email="test@gmail.com", password="12345")
-    db.session.add(test_user)
-    # Commit the changes for the users
+    # List of test user
+    test_users=[
+        {"name": "Test User 1", "email": "test1@gmail.com", "password": "12345"},
+        {"name": "Test User 2", "email": "test2@gmail.com", "password": "12345"},
+        {"name": "Test User 3", "email": "test3@gmail.com", "password": "12345"},
+    ]
+
+    #   convert a list of dictionaries to a list of user objects
+    def create_post_model(user):
+        return User(**user)
+
+    # Create a list of User objects
+    mapped_users = map(create_post_model, test_users)
+    t_users = list(mapped_users)
+
+      # Add the users to the database - add_all() is used to add multiple records
+    db.session.add_all(t_users)
+
+     # Commit the changes for the users
     db.session.commit()
 
     yield db  # this is where the testing happens!
     db.session.remove()  # looks like db.session.close() would work as well
     db.drop_all()
+
