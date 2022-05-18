@@ -7,11 +7,11 @@ class User(db.Model):
     password=db.Column(db.String(150),nullable=False )
     
 
-    def __repr__(self):
+    def __repr__(self):  #  give each object a string representation to recognize it for debuggin purposes
         return "<User %r>" % self.name
 
 
-class UserSchema(ma.Schema):
+class UserSchema(ma.Schema): 
     class Meta:
         # Fields to expose
         fields = ("id", "name", "email")
