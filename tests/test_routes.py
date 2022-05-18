@@ -1,6 +1,4 @@
 import json
-from unicodedata import name
-from urllib import response
 from api.models import User
 
 
@@ -10,7 +8,7 @@ def test_new_user(client, init_database):
     WHEN a new user is created
     THEN check that the name & email fields are defined correctly
     """
-    user = User(name='Cheryl', email="kiddo@gmail.com", password="12345")
+    user = User(name='Cheryl', email="kiddo@gmail.com", password="1738yikes")
     assert user.name == 'Cheryl'
     assert user.email == 'kiddo@gmail.com'
 
