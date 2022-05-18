@@ -1,7 +1,7 @@
 # Create a test client using the Flask application configured for testing
 import pytest
 import config
-from api.app import create_app, db
+from api.app import db
 from api.routes import app
 from api.models import User
 
